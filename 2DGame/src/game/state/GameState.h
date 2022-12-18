@@ -3,14 +3,16 @@
 #include "Global.h"
 #include "main/WindowManager.h"
 #include "render/RenderManager.h"
+#include "util/Loader.h"
 #include "game/States.h"
 
 class GameState {
 protected:
 	WindowManager* win_mgr;
 	RenderManager* renderer;
+	Loader* loader;
 public:
-	GameState(WindowManager* win_mgr, RenderManager* renderer);
+	GameState(WindowManager* win_mgr, RenderManager* renderer, Loader* loader);
 	~GameState();
 
 	States nextState = States::NONE;

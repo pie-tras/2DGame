@@ -6,6 +6,8 @@
 WindowManager::WindowManager() {
 	createWindow();
 
+	camera = new Camera();
+
 	std::cout << "Init Window Manager" << std::endl;
 	for (int i = 0; i < GLFW_KEY_LAST; i++) {
 		keys[i] = false;
@@ -17,6 +19,7 @@ WindowManager::WindowManager() {
 }
 
 WindowManager::~WindowManager() {
+	delete camera;
 }
 
 bool WindowManager::isKeyDown(int key) {
@@ -43,6 +46,19 @@ bool WindowManager::isMouseButtonReleased(int button) {
 	return !isMouseButtonDown(button) && buttons[button];
 }
 
+glm::vec2 WindowManager::getMousePosition() {
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+	return glm::vec2(xpos, ypos);
+}
+
+glm::vec2 WindowManager::getMouseWorldPosition() {
+	glm::vec2 mousePos = getMousePosition() / glm::vec2(getWindowWidth(), getWindowHeight()) - 0.5f;
+
+	return (glm::vec2(getWindowWidth() / camera->getZoom() * mousePos.x,
+		-getWindowHeight() / camera->getZoom() * mousePos.y) / getContentScale() + camera->getPosition());
+}
+
 void WindowManager::updateWindow() {
 	updateWindowFunctions();
 	updateInput(); // Must be last
@@ -57,8 +73,7 @@ void WindowManager::updateWindowFunctions() {
 		if (!fullscreen) {
 			glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
 			fullscreen = true;
-		}
-		else {
+		} else {
 			glfwSetWindowMonitor(window, NULL, (mode->width / 2) - window_width / 2, (mode->height / 2) - window_height / 2,
 				window_width, window_height, mode->refreshRate);
 			fullscreen = false;
@@ -84,40 +99,40 @@ void updateViewport(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
 }
 
-void WindowManager::createWindow() {
+GLFWwindow* WindowManager::createWindow() {
 	if (!glfwInit()) {
-		glfwTerminate();
+		return nullptr;
 	}
 
 	monitor = glfwGetPrimaryMonitor();
 	mode = glfwGetVideoMode(monitor);
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 
 	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
 	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
 	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
+	startup_width = window_width;
+
 	window = glfwCreateWindow(window_width, window_height,
 		std::format("{} v{}", TITLE, VERSION).c_str(), NULL, NULL);
 
 	if (!window) {
 		glfwTerminate();
+		return nullptr;
 	}
 
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(0); //vsync off
-	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSwapInterval(1);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		glfwTerminate();
-	}
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		std::cout << "GLEW init failed!" << std::endl;
 
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
 	glfwSetFramebufferSizeCallback(window, updateViewport);
+
+	return window;
 }
 
 GLFWwindow* WindowManager::getWindow() {
@@ -130,4 +145,8 @@ int WindowManager::getWindowWidth() {
 
 int WindowManager::getWindowHeight() {
 	return fullscreen ? mode->height : window_height;
+}
+
+float WindowManager::getContentScale() {
+	return (fullscreen ? (float)mode->width : (float)window_width) / (float)startup_width;
 }

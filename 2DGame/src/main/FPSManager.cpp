@@ -21,7 +21,7 @@ void FPSManager::runCycle(void (*cycle)(GameStateManager*, GLFWwindow*), GameSta
 		unprocessed = 0;
 	}
 
-	if (print_fps && fpsTimer.getStopwatch() >= ONE_SECOND) {
+	if ( print_fps && fpsTimer.getStopwatch() >= ONE_SECOND) {
 		std::cout << "[FPS]: " << frames << "\n";
 		frames = 0;
 		fpsTimer.setStopwatch();

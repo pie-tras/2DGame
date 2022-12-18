@@ -15,5 +15,5 @@ class FPSManager {
     long long unprocessed, frameTime;
 public:
     FPSManager(int fps_cap, bool print_fps);
-    void runCycle(void(*cycle)(GameStateManager*, GLFWwindow*), GameStateManager* gsm, GLFWwindow* window);
+    void runCycle(void (*cycle)(GameStateManager* gsm, GLFWwindow* window), GameStateManager* gsm, GLFWwindow* window);
 };

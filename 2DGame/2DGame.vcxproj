@@ -159,38 +159,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="res\shader\quad.frag.glsl" />
-    <None Include="res\shader\quad.vert.glsl" />
+    <None Include="res\shaders\gen.frag.glsl" />
+    <None Include="res\shaders\gen.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\main\Main.cpp" />
+    <ClCompile Include="src\game\Camera.cpp" />
     <ClCompile Include="src\game\state\GameState.cpp" />
     <ClCompile Include="src\game\state\MenuState.cpp" />
     <ClCompile Include="src\game\state\PlayState.cpp" />
     <ClCompile Include="src\game\state\SplashState.cpp" />
+    <ClCompile Include="src\main\WindowManager.cpp" />
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\main\Assets.cpp" />
     <ClCompile Include="src\main\FPSManager.cpp" />
     <ClCompile Include="src\game\GameStateManager.cpp" />
-    <ClCompile Include="src\main\Main.cpp" />
-    <ClCompile Include="src\main\WindowManager.cpp" />
     <ClCompile Include="src\render\RenderManager.cpp" />
     <ClCompile Include="src\render\Shader.cpp" />
     <ClCompile Include="src\render\shader\GenShader.cpp" />
+    <ClCompile Include="src\textures\Animation.cpp" />
+    <ClCompile Include="src\textures\AnimationManager.cpp" />
+    <ClCompile Include="src\textures\Texture.cpp" />
+    <ClCompile Include="src\textures\TextureAtlas.cpp" />
+    <ClCompile Include="src\util\Loader.cpp" />
     <ClCompile Include="src\util\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\Camera.h" />
     <ClInclude Include="src\game\state\GameState.h" />
     <ClInclude Include="src\game\state\MenuState.h" />
     <ClInclude Include="src\game\state\PlayState.h" />
     <ClInclude Include="src\game\state\SplashState.h" />
     <ClInclude Include="src\game\States.h" />
+    <ClInclude Include="src\main\WindowManager.h" />
     <ClInclude Include="src\Global.h" />
-    <ClInclude Include="src\LeakCheck.h" />
+    <ClInclude Include="src\main\Assets.h" />
     <ClInclude Include="src\main\FPSManager.h" />
     <ClInclude Include="src\game\GameStateManager.h" />
-    <ClInclude Include="src\main\WindowManager.h" />
     <ClInclude Include="src\render\RenderManager.h" />
+    <ClInclude Include="src\render\RenderModes.h" />
     <ClInclude Include="src\render\Shader.h" />
     <ClInclude Include="src\render\shader\GenShader.h" />
+    <ClInclude Include="src\textures\Animation.h" />
+    <ClInclude Include="src\textures\AnimationManager.h" />
+    <ClInclude Include="src\textures\Texture.h" />
+    <ClInclude Include="src\textures\TextureAtlas.h" />
+    <ClInclude Include="src\util\Loader.h" />
+    <ClInclude Include="src\util\Maths.h" />
     <ClInclude Include="src\util\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

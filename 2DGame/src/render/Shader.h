@@ -15,7 +15,7 @@ private:
     ShaderProgramSource parseShaders(const std::string& vertPath, const std::string& fragPath);
     unsigned int compileShader(unsigned int type, const std::string& source);
     unsigned int createShader(const std::string& vertexShader, const std::string& fragmentShader);
-
+    
 protected:
     unsigned int programID = 0;
 
