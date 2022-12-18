@@ -1,37 +1,49 @@
-#include <GLFW/glfw3.h>
+#include "Global.h"
+#include "WindowManager.h"
+#include "render/RenderManager.h"
+#include "game/GameStateManager.h"
+#include "main/FPSManager.h"
+
+#include "LeakCheck.h"
+
+void cycle(GameStateManager* gsm, GLFWwindow* window) {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    gsm->update();
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
 
 int main(void)
 {
-    GLFWwindow* window;
+    WindowManager* win_mgr = new WindowManager();
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
-
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
+    if (!win_mgr->getWindow()) {
+        delete win_mgr;
+        std::cout << "Window Failed to Load!" << std::endl;
         return -1;
     }
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+    RenderManager* renderer = new RenderManager(win_mgr);
+    
+    GameStateManager* gsm = new GameStateManager(win_mgr, renderer);
+    FPSManager* fps_mgr = new FPSManager(60, true);
 
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+    gsm->setActiveState(States::SPLASH);
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
+    while (!glfwWindowShouldClose(win_mgr->getWindow())) {
+        fps_mgr->runCycle(cycle, gsm, win_mgr->getWindow());
     }
 
     glfwTerminate();
+    delete win_mgr;
+    delete renderer;
+    delete gsm;
+    delete fps_mgr;
+
+    _CHECKLEAKS
+
     return 0;
 }

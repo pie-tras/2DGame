@@ -92,7 +92,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb_image;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +110,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb_image;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -126,7 +128,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb_image;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +146,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb_image;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,11 +163,35 @@
     <None Include="res\shader\quad.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\state\GameState.cpp" />
+    <ClCompile Include="src\game\state\MenuState.cpp" />
+    <ClCompile Include="src\game\state\PlayState.cpp" />
+    <ClCompile Include="src\game\state\SplashState.cpp" />
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\main\FPSManager.cpp" />
+    <ClCompile Include="src\game\GameStateManager.cpp" />
     <ClCompile Include="src\main\Main.cpp" />
+    <ClCompile Include="src\main\WindowManager.cpp" />
+    <ClCompile Include="src\render\RenderManager.cpp" />
+    <ClCompile Include="src\render\Shader.cpp" />
+    <ClCompile Include="src\render\shader\GenShader.cpp" />
+    <ClCompile Include="src\util\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\state\GameState.h" />
+    <ClInclude Include="src\game\state\MenuState.h" />
+    <ClInclude Include="src\game\state\PlayState.h" />
+    <ClInclude Include="src\game\state\SplashState.h" />
+    <ClInclude Include="src\game\States.h" />
     <ClInclude Include="src\Global.h" />
+    <ClInclude Include="src\LeakCheck.h" />
+    <ClInclude Include="src\main\FPSManager.h" />
+    <ClInclude Include="src\game\GameStateManager.h" />
+    <ClInclude Include="src\main\WindowManager.h" />
+    <ClInclude Include="src\render\RenderManager.h" />
+    <ClInclude Include="src\render\Shader.h" />
+    <ClInclude Include="src\render\shader\GenShader.h" />
+    <ClInclude Include="src\util\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
