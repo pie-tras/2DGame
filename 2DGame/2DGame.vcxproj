@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\perlin;$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\perlin;$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -128,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\perlin;$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\perlin;$(SolutionDir)lib\stb;$(SolutionDir)lib\glm;$(SolutionDir)lib\GLFW\include;$(SolutionDir)lib\glad\include;$(SolutionDir)2DGame\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -163,6 +163,7 @@
     <None Include="res\shaders\gen.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Chunk.cpp" />
     <ClCompile Include="src\main\Main.cpp" />
     <ClCompile Include="src\game\Camera.cpp" />
     <ClCompile Include="src\game\state\GameState.cpp" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\Camera.h" />
+    <ClInclude Include="src\game\Chunk.h" />
     <ClInclude Include="src\game\state\GameState.h" />
     <ClInclude Include="src\game\state\MenuState.h" />
     <ClInclude Include="src\game\state\PlayState.h" />

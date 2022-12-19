@@ -13,7 +13,7 @@ private:
 
     int window_width = 800;
     int window_height = 600;
-    const std::string TITLE = "Butterfly Example App";
+    const std::string TITLE = "2D Game";
     const double VERSION = 0.1;
 
     bool fullscreen = false;
@@ -41,6 +41,8 @@ public:
 
     glm::vec2 getMousePosition();
     glm::vec2 getMouseWorldPosition();
+
+    bool onScreen(const glm::vec2& pos);
 
     void updateWindow();
 

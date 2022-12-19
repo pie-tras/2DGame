@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Global.h"
+#include "game/Chunk.h"
 #include "game/state/GameState.h"
 #include "main/WindowManager.h"
 #include "render/RenderManager.h"
@@ -15,21 +16,17 @@
 
 class PlayState : public GameState{
 private:
-	Texture* playerTexture;
-	Texture* tileTexture;
 	TextureAtlas* tileAtlas;
-	TextureAtlas* sheepAtlas;
-	Animation* sheepAnim;
-	AnimationManager* animManager;
-
-	const static int worldSize = 20;
-	int tileMap[worldSize][worldSize];
-
-	std::vector<glm::vec2> placedObjects;
-
+	
 	glm::vec2 target = glm::vec2(0, 0), velocity = glm::vec2(0, 0);
-	float speed = 5.0f;
-	float zoom = 1.0f;
+	float speed = 12.0f;
+	float zoom = 0.1f;
+
+	Chunk* chunk[9];
+	int activeChunk = 4;
+
+	void setActiveChunk(const glm::vec2& playerPos);
+	void loadAroundActive(const glm::vec2& playerPos);
 
 public:
 	PlayState(WindowManager* win_mgr, RenderManager* renderer, Loader* loader);
