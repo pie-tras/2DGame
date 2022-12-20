@@ -9,6 +9,7 @@ private:
 public:
 	void move(const glm::vec2& target, const float t);
 	glm::mat4 getViewMatrix();
+	void setPosition(const glm::vec2& pos);
 	glm::vec2 getPosition();
 	void setZoom(float zoom);
 	float getZoom();

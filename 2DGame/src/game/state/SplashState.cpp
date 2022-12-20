@@ -45,7 +45,7 @@ void SplashState::calculateLoadingBar() {
 	glm::vec2 target = glm::vec2((load_percent * (win_mgr->getWindowWidth() - 64)) / 2
 		- win_mgr->getWindowWidth() / 2 + 32, -(win_mgr->getWindowHeight() / 2) + 32);
 
-	bar_pos = maths::lerp(bar_pos, target, 0.07f);
+	bar_pos = maths::lerp(bar_pos, target, 0.5f);
 	load_width = bar_pos.x - (-(win_mgr->getWindowWidth() / 2) + 32);
 
 	if (Assets::isLoaded && bar_pos.x >= target.x - 0.01f) {

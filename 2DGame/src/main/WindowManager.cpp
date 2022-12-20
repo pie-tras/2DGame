@@ -60,8 +60,13 @@ glm::vec2 WindowManager::getMouseWorldPosition() {
 }
 
 bool WindowManager::onScreen(const glm::vec2& pos) {
-	glm::vec2 dist = { camera->getPosition().x - pos.x, camera->getPosition().y - pos.y };
-	if (dist.x > getWindowWidth() / 2 || dist.y > getWindowHeight() / 2 || dist.x < -getWindowWidth() / 2 || dist.y < -getWindowHeight() / 2) {
+	glm::vec2 dist = { (camera->getPosition().x - pos.x) * camera->getZoom(),
+					   (camera->getPosition().y - pos.y) * camera->getZoom()};
+
+	int buffer = 128;
+
+	if (dist.x > (getWindowWidth() / 2) + buffer || dist.y > (getWindowHeight() / 2) + buffer ||
+		dist.x < (-getWindowWidth() / 2) - buffer || dist.y < (-getWindowHeight() / 2) - buffer) {
 		return false;
 	}
 	return true;

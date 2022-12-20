@@ -11,6 +11,10 @@ glm::mat4 Camera::getViewMatrix() {
 	return view;
 }
 
+void Camera::setPosition(const glm::vec2& pos) {
+	position = pos;
+}
+
 glm::vec2 Camera::getPosition() {
 	return position;
 }

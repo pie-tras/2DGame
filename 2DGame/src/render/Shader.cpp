@@ -23,6 +23,9 @@ ShaderProgramSource Shader::parseShaders(const std::string& vertPath, const std:
     while (getline(vertStream, line)) { ss[0] << line << '\n'; }
     while (getline(fragStream, line)) { ss[1] << line << '\n'; }
 
+    vertStream.close();
+    fragStream.close();
+
     return { ss[0].str(), ss[1].str() };
 }
 

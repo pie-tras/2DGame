@@ -12,30 +12,22 @@ private:
 	RenderManager* renderer;
 	TextureAtlas* tileAtlas;
 
-	const static int size = 16;
+	int depth;
+	int size;
+	int tileSize;
+
 	const float ROffset = (size * 1.5f) - 0.5f;
-	int tileMap[size][size];
 
 	glm::vec2 offset = {0, 0};
 
-	const siv::PerlinNoise::seed_type seed1 = 232333u;
-	const siv::PerlinNoise perlin1{ seed1 };
-	const siv::PerlinNoise::seed_type seed2 = 342344u;
-	const siv::PerlinNoise perlin2{ seed2 };
-
 	void renderTile(int id, int x, int y);
 public:
-	Chunk(WindowManager* win_mgr, RenderManager* renderer, TextureAtlas* tileAtlas);
+	Chunk(WindowManager* win_mgr, RenderManager* renderer, TextureAtlas* tileAtlas, int depth, int size, int tileSize);
 	~Chunk();
-
-	glm::vec2 min;
-	glm::vec2 max;
+	
+	int*** data;
 
 	void render();
-
-	void loadTiles();
-	bool inChunk(const glm::vec2& worldPos);
-	int getSize();
 
 	void moveOffset(const glm::vec2& delta);
 	void setOffset(const glm::vec2& newOffset);

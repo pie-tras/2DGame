@@ -68,6 +68,8 @@ void RenderManager::loadGenUniforms(const glm::vec2& position, const float rotat
 void RenderManager::render(Texture* texture, const glm::vec2& position, const float rotation_deg, const glm::vec2& scale, const glm::vec4& color) {
 	prepare(genShader);
 
+	if (!win_mgr->onScreen(position)) return;
+
 	if (texture !=  nullptr) {
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture->getTextureID());
@@ -90,6 +92,8 @@ void RenderManager::render(Texture* texture, const glm::vec2& position, const fl
 
 void RenderManager::render(Texture* texture, const glm::vec2& position, const float rotation_deg, const glm::vec2& scale) {
 	prepare(genShader);
+
+	if (!win_mgr->onScreen(position)) return;
 
 	if (texture != nullptr) {
 		glActiveTexture(GL_TEXTURE0);

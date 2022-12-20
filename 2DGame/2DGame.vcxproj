@@ -159,11 +159,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="data\map\map.data" />
     <None Include="res\shaders\gen.frag.glsl" />
     <None Include="res\shaders\gen.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\game\Chunk.cpp" />
+    <ClCompile Include="src\game\MapGen.cpp" />
     <ClCompile Include="src\main\Main.cpp" />
     <ClCompile Include="src\game\Camera.cpp" />
     <ClCompile Include="src\game\state\GameState.cpp" />
@@ -188,6 +190,7 @@
   <ItemGroup>
     <ClInclude Include="src\game\Camera.h" />
     <ClInclude Include="src\game\Chunk.h" />
+    <ClInclude Include="src\game\MapGen.h" />
     <ClInclude Include="src\game\state\GameState.h" />
     <ClInclude Include="src\game\state\MenuState.h" />
     <ClInclude Include="src\game\state\PlayState.h" />

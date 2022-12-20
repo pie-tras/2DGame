@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Include="res\shaders\gen.frag.glsl" />
     <None Include="res\shaders\gen.vert.glsl" />
+    <None Include="data\map\map.data" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main\FPSManager.cpp">
@@ -80,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\game\Chunk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\MapGen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -151,6 +155,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\game\Chunk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\MapGen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
